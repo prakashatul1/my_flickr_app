@@ -5,7 +5,7 @@
 * Create a virtual environment using python 3
 * Activate virtual environment
 * Clone Project
-* Install requirement.txt
+* Install requirements.txt
 * Run command (to get photos from flickr and save in db )
 ```
 python manage.py run_deployment_script
