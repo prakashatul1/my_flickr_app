@@ -9,11 +9,9 @@ from django.core.management import BaseCommand
 
 
 from flickr.models import Profile, Flickrgroup, Photo
+from infilect.settings import api_key, api_secret
 
 class Command(BaseCommand):
-
-    api_key = u"979f2d29820a45067e1b7be6e3c2420c"
-    api_secret = u"04342f8a8f3bef89"
 
     def handle(self, *args, **options):
 
@@ -24,14 +22,12 @@ class Command(BaseCommand):
         user.name = "emon0727"
         user.save()
 
-        flickr = flickrapi.FlickrAPI(self.api_key, self.api_secret, format='json')
+        flickr = flickrapi.FlickrAPI(api_key, api_secret, format='json')
         groups_list = json.loads(flickr.people.getGroups(user_id="144234201@N08"))['groups']['group']
 
         for group in groups_list:
 
             grup = Flickrgroup.objects.create( nsid = group['nsid'], group_name = group['name'])
-            print(grup)
-
 
             grup.profile_set.add(user)
 
@@ -53,7 +49,6 @@ class Command(BaseCommand):
                 foto.image.save(f"{foto.photo_id}+'_'+{foto.title}+.jpg", File(img_temp))
                 foto.save()
 
-            print(grup)
 
         print("############---------Completed-----------################")
 
