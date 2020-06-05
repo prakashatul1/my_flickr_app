@@ -3,7 +3,7 @@ backcall==0.1.0
 certifi==2018.11.29
 chardet==3.0.4
 decorator==4.3.0
-Django==2.1.5
+Django==2.2.13
 django-rest-auth==0.9.3
 djangorestframework==3.9.0
 flickrapi==2.4.0
